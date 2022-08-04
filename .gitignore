@@ -9,3 +9,4 @@ _notes/
 
 **/migrations
 /media
+.vscode/settings.json
