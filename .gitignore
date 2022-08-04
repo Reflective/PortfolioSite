@@ -6,7 +6,7 @@ _notes/
 /node_modules/
 *.pyc
 *.env
-
+**/__pycache__
 **/migrations
 /media
 .vscode/settings.json
