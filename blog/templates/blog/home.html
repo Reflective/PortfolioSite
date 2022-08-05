@@ -6,6 +6,10 @@
                  <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
                 <div class="article-metadata">
                     <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                    <!-- If there is a post picture, display it-->
+                    {% if post.postMedia != default  %}
+                        <img class="rounded-circle account-img" src="{{ object.postMedia.url}}> </img>
+                    {% endif %}
                 </div>
                 <p class="article-content">{{ post.content }}</p>
             </div>
