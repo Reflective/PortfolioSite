@@ -13,3 +13,5 @@ def create_postMedia(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_postMedia(sender, instance, **kwargs):
     instance.Posts.save()
+# Not sure if this will work on class based view..
+# Safe to delete if not 
