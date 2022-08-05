@@ -2,8 +2,8 @@
 {% block content %}
     <article class="media content-section">
         <div class="media-body">
-            {% if post.postMedia != null  %}
-                <img class="img-responsive" src="{{post.postMedia.url}}> </img>
+            {% if post.postMedia %}
+                <img class="img-responsive" src="{{post.postMedia.path}}> </img>
             {% endif %}
             <h2 class="article-title">{{ post.title }}</h2>
             <div class="article-metadata">

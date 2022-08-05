@@ -4,10 +4,13 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from PIL import Image
 
+def user_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT / user_<id>/<filename>
+    return 'user_{0}/{1}'.format(instance.user.id, filename)
 
 # Post will contain the various fields that will be populated by the user when writing
 class Post(models.Model):
-    postMedia = models.ImageField(default="default.jpg", upload_to="pics" )
+    postMedia = models.ImageField(null=True, blank=True, upload_to=user_directory_path)
     title = models.CharField(max_length=100)
     content = models.TextField()
     date_posted = models.DateTimeField(
@@ -21,14 +24,3 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse("post-detail", kwargs={"pk": self.pk})
-    
-
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        # overriding save method to resize images over 300 px
-        img = Image.open(self.postMedia.path)
-        if img.height > 1024 or img.width > 1024:
-            output_size = (1024, 1024)
-            img.thumbnail(output_size)
-        img.save(self.postMedia.path)

@@ -7,8 +7,8 @@
                 <div class="article-metadata">
                     <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                     <!-- If there is a post picture, display it-->
-                    {% if post.postMedia != default  %}
-                        <img class="rounded-circle account-img" src="{{ object.postMedia.url}}> </img>
+                    {% if post.postMedia  %}
+                        <img class="rounded-circle account-img" src="{{ object.postMedia.path}}> </img>
                     {% endif %}
                 </div>
                 <p class="article-content">{{ post.content }}</p>
