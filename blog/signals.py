@@ -7,7 +7,7 @@ from .models import Post
 @receiver(post_save, sender=User)
 def create_postMedia(sender, instance, created, **kwargs):
     if created:
-        Post.objects.create(user=instance) 
+        Post.postMedia.create(user=instance) 
 
 # saves instance to users posts.
 @receiver(post_save, sender=User)
