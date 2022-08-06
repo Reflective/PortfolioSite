@@ -43,7 +43,6 @@ CSRF_TRUSTED_ORIGINS = ["https://brandonpoll.com"]
 # Application definition
 
 INSTALLED_APPS = [
-    "blog.apps.BlogConfig",
     "users.apps.UserConfig",
     "crispy_forms",
     "django.contrib.admin",
@@ -52,6 +51,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "blog"
 ]
 
 MIDDLEWARE = [
