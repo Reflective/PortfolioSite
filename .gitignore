@@ -12,3 +12,4 @@ _notes/
 .vscode/settings.json
 Tests/OOPTUTORIAL.py
 .gitignore
+db.sqlite3
