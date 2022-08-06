@@ -10,3 +10,5 @@ _notes/
 **/migrations
 /media
 .vscode/settings.json
+Tests/OOPTUTORIAL.py
+.gitignore

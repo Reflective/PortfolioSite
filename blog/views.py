@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from .forms import PostPictureForm
+from .forms import PostUpdateForm
 from django.views.generic import (
     ListView,
     DetailView,
@@ -17,6 +17,7 @@ def home(request):
     context = {"posts": Post.objects.all()}
 
     return render(request, "blog/home.html", context)
+
 
 # Class based views
 class PostListView(ListView):
@@ -42,30 +43,30 @@ class PostDetailView(DetailView):
     model = Post
 
 
-class PostCreateView( LoginRequiredMixin, CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ["title", "content","postMedia"]
-    picform = PostPictureForm
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-    def picSave(self, form, request):
-        self.save()
-        return 
-class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Post
-    fields = ["title", "content","postMedia"]
+    fields = ["title", "content", "postMedia"]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
+    fields = ["title", "content", "postMedia"]
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
     # Tests if user matches post author
     def test_func(self):
         post = self.get_object()
         if self.request.user == post.author:
             return True
         return False
-        
+
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
