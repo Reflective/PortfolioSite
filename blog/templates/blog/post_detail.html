@@ -3,7 +3,7 @@
     <article class="media content-section">
         <div class="media-body">
                 <!-- If there is a post picture, display it-->
-            {% if post.postMedia %}
+            {% if post.postMedia and post.postMedia != "default.jpg" %}
                 <img class="img-responsive" src="{{post.postMedia.path}}> </img>
             {% endif %}
             <h2 class="article-title">{{ post.title }}</h2>

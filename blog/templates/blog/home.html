@@ -6,8 +6,8 @@
                  <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
                 <div class="article-metadata">
                     <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-                    <!-- If there is a post picture, display it-->
-                    {% if post.postMedia  %}
+                <!-- If there is a post picture, and if it is not default, display it-->
+                    {% if post.postMedia and post.postMedia != "default.jpg" %}
                         <img class="rounded-circle account-img" src="{{ object.postMedia.path}}> </img>
                     {% endif %}
                 </div>
