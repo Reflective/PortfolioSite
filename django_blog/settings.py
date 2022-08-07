@@ -28,7 +28,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+ADMIN = True
 ALLOWED_HOSTS = [
     "brandonpoll.com",
     "www.brandonpoll.com",
@@ -43,7 +43,7 @@ CSRF_TRUSTED_ORIGINS = ["https://brandonpoll.com"]
 # Application definition
 
 INSTALLED_APPS = [
-    "blog.apps.BlogConfig",
+    "blog",
     "users.apps.UserConfig",
     "crispy_forms",
     "django.contrib.admin",
