@@ -52,9 +52,13 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class PostUpdateView(
+    LoginRequiredMixin, UserPassesTestMixin, UpdateView, PostUpdateForm
+):
     model = Post
     fields = ["title", "content", "postMedia"]
+    # picform = PostUpdateForm()
+    # context_object_name = "picform"
 
     def form_valid(self, form):
         form.instance.author = self.request.user
