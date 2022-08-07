@@ -52,9 +52,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PostUpdateView(
-    LoginRequiredMixin, UserPassesTestMixin, UpdateView, PostUpdateForm
-):
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ["title", "content", "postMedia"]
     # picform = PostUpdateForm()

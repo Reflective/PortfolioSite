@@ -2,14 +2,13 @@
 {% block content %}
     <article class="media content-section">
         <div class="media-body">
-                <!-- If there is a post picture, display it-->
-            {% if post.postMedia and post.postMedia != "default.jpg" %}
-                <img class="img-responsive" src="{{post.postMedia.path}}> </img>
-            {% endif %}
             <h2 class="article-title">{{ post.title }}</h2>
             <div class="article-metadata">
+                 <!-- If there is a post picture, display it-->
+                {% if post.postMedia and post.postMedia != "default.jpg" %}
+                <img class="img-fluid" src="{{ post.postMedia.url}}"">
+                {% endif %}
                 <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-             
                 {% if post.author == user %}
                 <div>
                     <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' post.id %}">Edit Post</a>
