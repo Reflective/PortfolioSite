@@ -10,3 +10,4 @@ _notes/
 **/migrations
 /media
 .vscode/settings.json
+db.sqlite3
